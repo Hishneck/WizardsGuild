@@ -1,9 +1,21 @@
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: rgb(39, 36, 43);
 }
-
+.title{
+    position: relative;
+    margin: 20px;
+    padding: 15px;
+    text-transform: uppercase;
+    color: #ccc;
+    background-color: rgb(36, 43, 38);
+    border: 1px solid #ccc;
+    width: 500px;
+    text-align: center;
+}
 .card {
     border: 1px solid #ccc;
     margin: 10px;
@@ -11,22 +23,80 @@ body{
     width: 500px;
     text-align: center;
     color: #ccc;
-    background-color: rgb(36, 43, 38);;
+    background-color: rgb(36, 43, 38);
+    transition: opacity 0.3s, transform 0.3s;
 }
 .card button{
-    /* display: flex; */
     position: absolute;
     top: 20;
-    /* right: 200 !important; */
+    /* right: 150px; */
     margin-left: 200px;
     width: 40px;
     height: 40px;
     font-size: 20px;
     background-color: rgb(47, 31, 25);;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     color: #ccc;
+    transition: all 0.3s, transform 0.3s;
 }
 .card button:hover{
     cursor: pointer;
     transform: scale(1.1);
+}
+.card.removing {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.modal {
+    position: absolute;
+    display: none;
+    align-items: center;
+    background-color: #cccccc3a;
+    width: 100vw;
+    height: 100%;
+    z-index: 10;
+    justify-content: center;
+}
+.modal.active{
+    display: flex;
+}
+.confirm__window {
+    position: relative;
+    justify-content: center;
+    width: 500px;
+    height: 250px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px 20px;
+}
+.confirm__window p{
+    font-size: 25px;
+    margin: 20px;
+    text-align: center;
+}
+.btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border: 2px solid #000000;
+    color: #ccc;
+    transition: all 0.3s, transform 0.3s;
+}
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+} 
+.btn-close{
+    top: 15px;
+    right: 15px;
+    background-color: rgb(47, 31, 25);;
+}
+.btn-confirm {
+    bottom: 20px;
+    background-color: rgb(32, 71, 32);
 }

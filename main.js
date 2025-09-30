@@ -1,8 +1,12 @@
 const API = 'http://localhost:4000';
-
+const container = document.getElementById('cards-container');
+const confirmWindow = document.getElementById('confirm')
+const btnClose = document.getElementById('btn-close')
+const btnConfirm = document.getElementById('btn-confirm')
+const btnRemove = document.getElementById('btn-remove')
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('cards-container');
+    
     
     fetch(`http://localhost:4000/orders`)
         .then(response => {
@@ -25,9 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function createCard(item) {
     const card = document.createElement('div');
     card.classList.add('card');
-    
+    card.dataset.id = item.id; 
+    card.addEventListener('click', () => {
+        handleCardClick(item.id);
+    });
     card.innerHTML = `
-        <button id:"remove">X</button>
+        <button data-type = "btn-remove" data-index="${item.id}">X</button>
         <h2>${item.title}</h2>
         <p>ОПИСАНИЕ: ${item.description}</p>
         <p>ЗАКАЗЧИК: ${item.customerName}</p>
@@ -38,6 +45,32 @@ function createCard(item) {
         <img src="${item.assignee.avatar}" alt="${item.assignee.name}" width="300">
         <p>ИСПОЛЬНИТЕЛЬ: ${item.assignee.name}</p>
     `;
+    return card; 
+}
+
+container.onclick = function(event){
+    if (event.target.dataset.id){
+        const index = parseInt(event.target.dataset.id)
+        const type = event.target.dataset.type
+        if (type==='btn-remove'){
+            confirmOpen(index)
+        }
+        render()
+    }
+}
+
+const confirmOpen =function(){
+    confirmWindow.classList.toggle('active')
+    btnClose.onclick = ()=>{
+        confirmWindow.classList.remove('active')
+    }
+    btnConfirm.onclick=()=>{
+        confirmWindow.classList.remove('active')
+        console.log('dsahwodacfawdsa')
+    }
     
-    return card;
+}
+function handleCardClick(id) {
+    console.log('Выбран ID:', id);
+    // Здесь можно добавить логику обработки клика
 }
