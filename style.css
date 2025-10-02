@@ -18,45 +18,69 @@ body{
 }
 .card {
     border: 1px solid #ccc;
-    margin: 10px;
-    padding: 15px;
+    margin: 30px;
+    padding: 50px 15px 15px 15px;
     width: 500px;
     text-align: center;
     color: #ccc;
     background-color: rgb(36, 43, 38);
     transition: opacity 0.3s, transform 0.3s;
 }
-.card button{
+.card h2{
+    margin-top: 20px;
+}
+.card:hover{
+    /* transform: scale(1.02); */
+    background-color: rgb(68, 81, 72);
+}
+.card .btn-remove{
     position: absolute;
-    top: 20;
+    /* top: 10; */
     /* right: 150px; */
+    margin-top: -30px;
     margin-left: 200px;
     width: 40px;
     height: 40px;
     font-size: 20px;
-    background-color: rgb(47, 31, 25);;
+    background-color: rgb(47, 31, 25);
     border: 2px solid #ccc;
     color: #ccc;
     transition: all 0.3s, transform 0.3s;
 }
-.card button:hover{
+.card .btn-remove:hover{
     cursor: pointer;
     transform: scale(1.1);
+    background-color: rgb(132, 24, 24);
+}
+.card .btn-edit{
+    background-color: rgb(100, 96, 44);
+    color: #ccc;
+    font-size: 20px;
+    border: 2px solid #ccc;
+    transition: all 0.3s, transform 0.3s;
+}
+.card .btn-edit:hover{
+    cursor: pointer;
+    transform: scale(1.1); 
+    background-color: rgb(146, 140, 64);
 }
 .card.removing {
     opacity: 0;
     transform: scale(0.8);
+    
 }
 
-.modal {
-    position: absolute;
+.modal{
+    position: fixed;
+    /* display: flex; */
     display: none;
     align-items: center;
     background-color: #cccccc3a;
-    width: 100vw;
+    width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 100;
     justify-content: center;
+    top: 0vh;
 }
 .modal.active{
     display: flex;
@@ -96,7 +120,40 @@ body{
     right: 15px;
     background-color: rgb(47, 31, 25);;
 }
+.btn-close:hover{
+    background-color: rgb(132, 24, 24);
+}
 .btn-confirm {
     bottom: 20px;
     background-color: rgb(32, 71, 32);
+}
+.btn-confirm:hover{
+    background-color: rgb(55, 121, 55);
+}
+.modal__edit {
+    position: fixed;
+    align-items: center;
+    /* display: flex; */
+    display: none;
+    background-color: #cccccc3a;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    justify-content: center;
+    top: 0vh;
+}
+.edit__window {
+    display: flex;
+    flex-direction: column;
+    background-color: #ccc;
+    width: 500px;
+    padding: 20px;
+}
+.edit__window form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__edit.active{
+    display: flex;
 }
